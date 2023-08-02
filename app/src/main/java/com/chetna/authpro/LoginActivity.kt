@@ -27,12 +27,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         phoneNumber=findViewById(R.id.phoneNumber)
         signUp=findViewById(R.id.button3)
-      /*  binding.button4.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+        binding.button4.setOnClickListener {
+            startActivity(Intent(this,PhoneActivity::class.java))
             finish()
-        }*/
+        }
+
         signUp.setOnClickListener {
             number = phoneNumber.editText?.text?.toString() ?: ""
+            if(number.isEmpty()||binding.userName.text.toString().isEmpty()){
+                Toast.makeText(this,"Please Fill All The Details",Toast.LENGTH_SHORT).show()
+            }
             if(number.isNotEmpty()) {
                 if (number.length == 10) {
                     number="+91$number"
